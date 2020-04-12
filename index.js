@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://bumjin:handy21@boilerplate-gfnfu.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://bumjin:1q2w3e@boilerplate-gfnfu.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser:true, useUnifiedTopology:true, useCreateIndex:true, useFindAndModify:true
 }).then(() => console.log('MongoDB connected...'))
 .catch(err => console.log(err))
@@ -20,7 +20,7 @@ mongoose.connect('mongodb+srv://bumjin:handy21@boilerplate-gfnfu.mongodb.net/tes
 
 console.log( ip.address() );
 
-app.get('/', (req, res) => res.send('안녕하세요.!'))
+app.get('/', (req, res) => res.send('굿모닝 안녕하세요.!'))
 
 app.post('/register', (req, res) => {
         //회원 가입할 때 필요한 정보들을 client에서 가져오면
