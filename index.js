@@ -3,6 +3,8 @@ const app = express()
 const port = 5000
 const ip = require("ip");
 const bodyParser = require("body-parser");
+
+const config = require('./config/key')
 const {User} = require("./models/User");
 
 //application/urlencorded
@@ -12,7 +14,7 @@ app.use(bodyParser.json());
 
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://bumjin:1q2w3e@boilerplate-gfnfu.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect(config.mongoURI, {
     useNewUrlParser:true, useUnifiedTopology:true, useCreateIndex:true, useFindAndModify:true
 }).then(() => console.log('MongoDB connected...'))
 .catch(err => console.log(err))
