@@ -1,6 +1,8 @@
 const express = require('express')
+//var cors = require('cors')
 const app = express()
-const port = 5000
+//app.use(cors())
+
 const ip = require("ip");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -14,7 +16,12 @@ app.use(bodyParser.urlencoded({extended: true}));
 //application/json
 app.use(bodyParser.json());
 app.use(cookieParser())
-
+// app.use(function(req, res, next) {
+//     //res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+//     res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+//   });
 
 const mongoose = require('mongoose')
 mongoose.connect(config.mongoURI, {
@@ -25,7 +32,9 @@ mongoose.connect(config.mongoURI, {
 
 console.log( ip.address() );
 
-app.get('/', (req, res) => res.send('굿모닝 안녕하세요.!'))
+app.get('/', (req, res) => 
+    res.send('굿모닝 안녕하세요.!')
+)
 
 app.post('/api/user/register', (req, res) => {
         //회원 가입할 때 필요한 정보들을 client에서 가져오면
@@ -107,6 +116,7 @@ app.get('/api/hello', (req, res) => {
     res.send('안녕하세요')
 })
 
+const port = 5000
 app.listen(port, () => 
     console.log(`Example app listening at http://${ip.address()}:${port}`)
 )

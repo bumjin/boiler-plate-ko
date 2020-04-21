@@ -3,8 +3,9 @@ import axios from 'axios'
 
 function LandingPage() {
     useEffect(() => {
-        axios.get('http://172.19.20.125:5000/api/hello')
-        .then(response => console.log(response.data))
+        //axios.get('http://localhost:5000/api/hello')
+        axios.get('/api/hello')
+        .then(response => console.log(response))
     }, [])
 
     return (
